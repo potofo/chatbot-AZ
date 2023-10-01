@@ -41,6 +41,8 @@ This code is a simple chatbot program for Azure OpenAI Service. Here is an expla
 
 Note: This code is specifically designed to work with Azure OpenAI Service and Streamlit. It leverages the capabilities of these services to create a simple chatbot interface.
 
+![chatbot-AZ_screen](https://github.com/potofo/chatbot-AZ/assets/138992835/06a0c3f6-ccf0-490e-88f4-fdf5cba2cae5)
+
 ## Requirements
 - Azure OpenAI Service:
   - You will need an Azure OpenAI endpoint, API key, and API version for this program to work.
