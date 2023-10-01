@@ -1,5 +1,7 @@
 # chatbot-AZ - Simple Chatbot program for Azure OpenAI Service
 
+![chatbot-AZ_test](https://github.com/potofo/chatbot-AZ/assets/138992835/b860ca17-c546-40cb-835f-e5d0331d0b5b)
+
 ## Description
 This is a sample program designed to help inexperienced programmers learn how to use the Azure OpenAI Service API. It demonstrates how to interact with the OpenAI Chat Completion API and handle conversation persistence.
 
