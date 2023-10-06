@@ -18,6 +18,8 @@
 # Revision:
 #   2023/09/30 01-00 potofo   Initial Creation.
 #   2023/10/01 01-01 portfo   Fixed incremental response from assustant.
+#   2023/10/06 01-02 portfo   Consider parameterizing for Azure App Service
+#                             and environment variables.
 # Disclaimer:
 #   Please be aware that we are not responsible for any problems caused by this 
 #   program.
@@ -31,23 +33,43 @@
 #   -
 ################################################################################
 # Import sections
-import openai              # 0.27.8
-import streamlit as st     # must be 1.24.0 or higher
-import pprint              # for debug to confirm message internal scheme 
+import openai                     # 0.27.8
+import streamlit as st            # must be 1.24.0 or higher
+import pprint                     # for debug to confirm message internal scheme
+import os                         # for Get Environment Valiables
+from os.path import join, dirname # for establish path
+from dotenv import  load_dotenv   # for Loading .env file
+
+# Get Environment Variables
+load_dotenv(verbose=True)
+dotenv_path = join(dirname(__file__), '.env')
+load_dotenv(dotenv_path)
 
 # Global definitions
-MAX_MESSAGES        = 5
-OPENAI_API_TYPE     = 'azure'
-OPENAI_API_KEY      = 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
-OPENAI_API_HOST     = 'https://xxxxxxxx.openai.azure.com/'
-OPENAI_API_VERSION  = '2023-07-01-preview'
+# for example
+# MAX_MESSAGES        = 5
+# OPENAI_API_TYPE     = 'azure'
+# OPENAI_API_KEY      = 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
+# OPENAI_API_HOST     = 'https://xxxxxxxx.openai.azure.com/'
+# OPENAI_API_VERSION  = '2023-07-01-preview'
+# AZURE_DEPLOYMENT_ID = 'gpt-35-turbo'
+# SYSTEM_PROMPT       = 'As an experienced engineer, you will step-by-step' \
+#                       ' consider complex technical problems, answer' \
+#                       '  questions,and provide advice.'
+MAX_MESSAGES        = int(os.environ.get('MAX_MESSAGES',5))
+OPENAI_API_TYPE     = os.environ.get('OPENAI_API_TYPE','azure')
+OPENAI_API_KEY      = os.environ.get('OPENAI_API_KEY')
+OPENAI_API_HOST     = os.environ.get('OPENAI_API_HOST')
+OPENAI_API_VERSION  = os.environ.get('OPENAI_API_VERSION','2023-07-01-preview')
 # The AZURE_DEPLOYMENT_ID is the name of the LLM deployed with
 # Azure OpenAI Service
-AZURE_DEPLOYMENT_ID = 'gpt-35-turbo'
-#AZURE_DEPLOYMENT_ID = 'gpt-4'
-SYSTEM_PROMPT       = 'As an experienced engineer, you will step-by-step' \
+AZURE_DEPLOYMENT_ID = os.environ.get('AZURE_DEPLOYMENT_ID','gpt-35-turbo')
+# SYSTEM_PROMPT
+SYSTEM_PROMPT       = os.environ.get('SYSTEM_PROMPT',
+                      'As an experienced engineer, you will step-by-step' \
                       ' consider complex technical problems, answer questions,' \
                       ' and provide advice.'
+                      )
 
 # Global Valiables definitions
 list_messages = []
