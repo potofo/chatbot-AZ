@@ -51,6 +51,8 @@ Note: This code is specifically designed to work with Azure OpenAI Service and S
   - This program uses the `openai` package to interact with the OpenAI API.
 - Streamlit:
   - The program requires Streamlit version 1.24.0 or higher to use `streamlit_chat`.
+- python-dotenv:
+  - The program requires python-dotenv version 1.0.0 or higher to use get environment valiables.
 
 ## Establish OpenAI key on Azure OpenAI Service
 Here is the process for issuing an API in Azure OpenAI Service:
@@ -70,6 +72,7 @@ This is the process for issuing an API in Azure OpenAI Service. For detailed ins
 ## Revision
 - 2023/09/30 01-00 potofo: Initial Creation.
 - 2023/10/01 01-01 portfo: Fixed incremental response from assistant.
+- 2023/10/06 01-02 portfo: Consider parameterizing for Azure App Service and environment variables.
 
 ## Disclaimer
 Please be aware that we are not responsible for any problems caused by this program.
