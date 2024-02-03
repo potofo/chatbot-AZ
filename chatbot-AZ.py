@@ -20,6 +20,9 @@
 #   2023/10/01 01-01 portfo   Fixed incremental response from assustant.
 #   2023/10/06 01-02 portfo   Consider parameterizing for Azure App Service
 #                             and environment variables.
+#   2024/02/03 01-02 portfo   Changed OPENAI_API_VERSION to latest.
+# How to execut:
+#   streamlit run chatbot-AZ.py
 # Disclaimer:
 #   Please be aware that we are not responsible for any problems caused by this 
 #   program.
@@ -28,7 +31,7 @@
 # License:
 #   MIT License
 # Copyright:
-#   Copyright (c) 2023 potofo. All rihtts reserved.
+#   Copyright (c) 2023-2024 potofo. All rihtts reserved.
 # Note:
 #   -
 ################################################################################
@@ -38,11 +41,12 @@ import streamlit as st            # must be 1.24.0 or higher
 import pprint                     # for debug to confirm message internal scheme
 import os                         # for Get Environment Valiables
 from os.path import join, dirname # for establish path
-from dotenv import  load_dotenv   # for Loading .env file
+from dotenv import load_dotenv    # for Loading .env file
 
 # Get Environment Variables
 load_dotenv(verbose=True)
 dotenv_path = join(dirname(__file__), '.env')
+print(f'dotenv_path:{dotenv_path}')
 load_dotenv(dotenv_path)
 
 # Global definitions
@@ -51,7 +55,17 @@ load_dotenv(dotenv_path)
 # OPENAI_API_TYPE     = 'azure'
 # OPENAI_API_KEY      = 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
 # OPENAI_API_HOST     = 'https://xxxxxxxx.openai.azure.com/'
-# OPENAI_API_VERSION  = '2023-07-01-preview'
+# OPENAI_API_VERSION  = '2023-12-01-preview'
+# Note about API VERSION
+# Azure officially announced on January 17, 2023, that the following
+#  API versions will be discontinued on April 2, 2024.
+# 2023-03-15-preview
+# 2023-06-01-preview
+# 2023-07-01-preview
+# 2023-08-01-preview
+# As of February 3, 2024, the latest API version is 2023-12-01-preview. 
+
+# https://learn.microsoft.com/ja-jp/azure/ai-services/openai/api-version-deprecation
 # AZURE_DEPLOYMENT_ID = 'gpt-35-turbo'
 # SYSTEM_PROMPT       = 'As an experienced engineer, you will step-by-step' \
 #                       ' consider complex technical problems, answer' \
@@ -60,7 +74,7 @@ MAX_MESSAGES        = int(os.environ.get('MAX_MESSAGES',5))
 OPENAI_API_TYPE     = os.environ.get('OPENAI_API_TYPE','azure')
 OPENAI_API_KEY      = os.environ.get('OPENAI_API_KEY')
 OPENAI_API_HOST     = os.environ.get('OPENAI_API_HOST')
-OPENAI_API_VERSION  = os.environ.get('OPENAI_API_VERSION','2023-07-01-preview')
+OPENAI_API_VERSION  = os.environ.get('OPENAI_API_VERSION','2023-12-01-preview')
 # The AZURE_DEPLOYMENT_ID is the name of the LLM deployed with
 # Azure OpenAI Service
 AZURE_DEPLOYMENT_ID = os.environ.get('AZURE_DEPLOYMENT_ID','gpt-35-turbo')

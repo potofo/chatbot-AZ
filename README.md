@@ -18,6 +18,45 @@ This is a sample program designed to help inexperienced programmers learn how to
 - The token limit size for the prompt is set to 800 tokens in the API instructions. If this limit is exceeded, an error is expected.
 - API calls are intended to be asynchronous, with the response messages being streamed in real-time to the response container in Streamlit. However, there is a bug that prevents displaying while communicating asynchronously.
 
+## Installation
+The prerequisite packages for chatbot-AZ are listed in requirements.txt after normalization. Please install them with the following pip install command.
+**pip install -r requirements.txt**
+It is recommended to build a Python virtual environment (python -m venv venv) as your execution environment.
+```shell
+(venv) D:\Python\chatbot-AZ>pip install -r requirements.txt
+Collecting openai==0.27.8 (from -r requirements.txt (line 1))
+  Using cached openai-0.27.8-py3-none-any.whl.metadata (13 kB)
+Collecting streamlit==1.27.1 (from -r requirements.txt (line 2))
+  Using cached streamlit-1.27.1-py2.py3-none-any.whl.metadata (8.0 kB)
+Collecting python-dotenv==1.0.0 (from -r requirements.txt (line 3))
+  Using cached python_dotenv-1.0.0-py3-none-any.whl (19 kB)
+...
+Using cached smmap-5.0.1-py3-none-any.whl (24 kB)
+Installing collected packages: pytz, zipp, watchdog, validators, urllib3, tzdata, typing-extensions, tornado, toolz, toml, tenacity, smmap, six, rpds-py, python-dotenv, pygments, protobuf, pillow, packaging, numpy, multidict, mdurl, MarkupSafe, idna, frozenlist, colorama, charset-normalizer, certifi, cachetools, blinker, attrs, async-timeout, yarl, tzlocal, tqdm, requests, referencing, python-dateutil, pyarrow, markdown-it-py, jinja2, importlib-metadata, gitdb, click, aiosignal, rich, pydeck, pandas, jsonschema-specifications, gitpython, aiohttp, openai, jsonschema, altair, streamlit
+Successfully installed MarkupSafe-2.1.5 aiohttp-3.9.3 aiosignal-1.3.1 altair-5.2.0 async-timeout-4.0.3 attrs-23.2.0 blinker-1.7.0 cachetools-5.3.2 certifi-2024.2.2 charset-normalizer-3.3.2 click-8.1.7 colorama-0.4.6 frozenlist-1.4.1 gitdb-4.0.11 gitpython-3.1.41 idna-3.6 importlib-metadata-6.11.0 jinja2-3.1.3 jsonschema-4.21.1 jsonschema-specifications-2023.12.1 markdown-it-py-3.0.0 mdurl-0.1.2 multidict-6.0.5 numpy-1.26.3 openai-0.27.8 packaging-23.2 pandas-2.2.0 pillow-10.2.0 protobuf-4.25.2 pyarrow-15.0.0 pydeck-0.8.1b0 pygments-2.17.2 python-dateutil-2.8.2 python-dotenv-1.0.0 pytz-2024.1 referencing-0.33.0 requests-2.31.0 rich-13.7.0 rpds-py-0.17.1 six-1.16.0 smmap-5.0.1 streamlit-1.27.1 tenacity-8.2.3 toml-0.10.2 toolz-0.12.1 tornado-6.4 tqdm-4.66.1 typing-extensions-4.9.0 tzdata-2023.4 tzlocal-5.2 urllib3-2.2.0 validators-0.22.0 watchdog-3.0.0 yarl-1.9.4 zipp-3.17.0
+```
+
+## How to Execute
+Execute using the following streamlit command. When executed, a browser will launch.
+Run `streamlit run chatbot-AZ.py --server.port 80`.
+
+```shell
+(venv) D:\Python\chatbot-AZ>streamlit run chatbot-AZ.py --server.port 80
+
+  You can now view your Streamlit app in your browser.
+
+  Local URL: http://localhost:80
+  Network URL: http://192.168.1.137:80
+
+dotenv_path:Q:\OneDrive\Python\chatbot-AZ\.env
+Not Found list_message key in session status
+[{'content': 'As an experienced engineer, you play the role of thinking '
+             'through complex technical issues step by step, answering '
+             'questions, and providing advice.',
+  'role': 'system'}]
+```
+This command is used to run the `chatbot-AZ.py` script with `streamlit`, on port 80.
+
 ## Code explanation
 This code is a simple chatbot program for Azure OpenAI Service. Here is an explanation of the different sections of the code:
 
